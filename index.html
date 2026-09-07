@@ -24,8 +24,8 @@
 
     .container {
       text-align: center;
-      padding: 2rem;
-      max-width: 500px;
+      padding: 2rem 1.5rem;
+      max-width: 520px;
       width: 90%;
       z-index: 2;
     }
@@ -35,8 +35,8 @@
       background: linear-gradient(135deg, #ffd000, #ff9100);
       color: #1a1a1a;
       border: none;
-      padding: 14px 32px;
-      font-size: 1.1rem;
+      padding: 14px 34px;
+      font-size: 1.15rem;
       font-weight: 700;
       border-radius: 50px;
       cursor: pointer;
@@ -45,11 +45,11 @@
     }
 
     .btn-open:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 25px rgba(255, 208, 0, 0.6);
+      transform: scale(1.06);
+      box-shadow: 0 6px 28px rgba(255, 208, 0, 0.6);
     }
 
-    /* Contenedor del contenido que aparece */
+    /* Contenedor del contenido */
     .gift-content {
       display: none;
       opacity: 0;
@@ -63,85 +63,173 @@
       transform: translateY(0);
     }
 
-    /* Girasol / Flor en puro CSS */
-    .flower-wrapper {
+    /* === CONTENEDOR DEL RAMO === */
+    .bouquet-wrapper {
       position: relative;
-      width: 140px;
-      height: 140px;
-      margin: 0 auto 2.5rem auto;
+      width: 280px;
+      height: 260px;
+      margin: 0 auto 1.5rem auto;
       animation: gentle-sway 4s ease-in-out infinite alternate;
+    }
+
+    /* Cada flor con su propio tallo y posición */
+    .flower-item {
+      position: absolute;
+      transform-origin: bottom center;
+    }
+
+    /* Flor central */
+    .flower-center {
+      top: 0px;
+      left: calc(50% - 45px);
+      z-index: 3;
+    }
+
+    /* Flor izquierda */
+    .flower-left {
+      top: 30px;
+      left: calc(50% - 105px);
+      transform: rotate(-18deg) scale(0.9);
+      z-index: 2;
+    }
+
+    /* Flor derecha */
+    .flower-right {
+      top: 30px;
+      left: calc(50% + 15px);
+      transform: rotate(18deg) scale(0.9);
+      z-index: 2;
+    }
+
+    /* Cabeza de la flor */
+    .flower-head {
+      position: relative;
+      width: 90px;
+      height: 90px;
     }
 
     .center {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 52px;
-      height: 52px;
-      background: radial-gradient(circle, #5a3818 0%, #301704 100%);
+      width: 36px;
+      height: 36px;
+      background: radial-gradient(circle, #5a3818 0%, #291202 100%);
       border-radius: 50%;
       transform: translate(-50%, -50%);
-      z-index: 3;
-      box-shadow: inset 0 0 6px rgba(0,0,0,0.6);
+      z-index: 4;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.7);
     }
 
     .petal {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 22px;
-      height: 65px;
+      width: 15px;
+      height: 44px;
       background: linear-gradient(to top, #ffb703, #ffe600);
       border-radius: 50% 50% 20% 20%;
       transform-origin: bottom center;
-      margin-left: -11px;
-      margin-top: -65px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+      margin-left: -7.5px;
+      margin-top: -44px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
     }
 
-    /* Tallo y hojas */
+    /* Tallos individuales */
     .stem {
-      position: absolute;
-      top: 90px;
-      left: 50%;
-      width: 8px;
-      height: 100px;
+      width: 7px;
       background: linear-gradient(to right, #2d6a4f, #40916c);
-      transform: translateX(-50%);
       border-radius: 4px;
-      z-index: 1;
+      margin: -6px auto 0 auto;
+      position: relative;
     }
 
+    .flower-center .stem {
+      height: 145px;
+    }
+
+    .flower-left .stem {
+      height: 135px;
+      transform: rotate(7deg);
+    }
+
+    .flower-right .stem {
+      height: 135px;
+      transform: rotate(-7deg);
+    }
+
+    /* Hojas decorativas */
     .leaf {
       position: absolute;
-      width: 25px;
-      height: 15px;
+      width: 28px;
+      height: 16px;
       background: #40916c;
-      border-radius: 100px 0px;
+      border-radius: 100px 0;
       z-index: 1;
     }
 
-    .leaf-left {
-      top: 130px;
-      left: calc(50% - 28px);
-      transform: rotate(-30deg);
+    .leaf-1 {
+      top: 140px;
+      left: 35px;
+      transform: rotate(-40deg);
     }
 
-    .leaf-right {
-      top: 150px;
-      left: calc(50% + 4px);
-      transform: rotate(200deg);
+    .leaf-2 {
+      top: 140px;
+      right: 35px;
+      transform: rotate(220deg);
     }
 
-    /* Texto */
+    /* Cinta / Lazo del ramo */
+    .bouquet-ribbon {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .ribbon-knot {
+      width: 24px;
+      height: 14px;
+      background: #e63946;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .ribbon-tails {
+      display: flex;
+      gap: 4px;
+      margin-top: -2px;
+    }
+
+    .ribbon-tail {
+      width: 6px;
+      height: 22px;
+      background: #e63946;
+      border-radius: 2px;
+    }
+
+    .ribbon-tail.left {
+      transform: rotate(18deg);
+    }
+
+    .ribbon-tail.right {
+      transform: rotate(-18deg);
+    }
+
+    /* Tarjeta de texto */
     .card-text {
       background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 1.8rem;
-      margin-top: 5.5rem;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      margin-top: 1.5rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
     }
 
     .card-text h1 {
@@ -153,14 +241,14 @@
 
     .card-text p {
       font-size: 1.05rem;
-      line-height: 1.6;
+      line-height: 1.65;
       color: #e2e8f0;
     }
 
     /* Animaciones */
     @keyframes gentle-sway {
-      0% { transform: rotate(-3deg); }
-      100% { transform: rotate(3deg); }
+      0% { transform: rotate(-2.5deg); }
+      100% { transform: rotate(2.5deg); }
     }
 
     .petal-particle {
@@ -185,49 +273,84 @@
 <body>
 
   <div class="container">
-    <!-- Botón que ve primero -->
+    <!-- Botón inicial -->
     <div id="intro-screen">
       <button class="btn-open" onclick="revealGift()">Abrir sorpresa ✨</button>
     </div>
 
-    <!-- Contenido revelado -->
+    <!-- Ramo y mensaje -->
     <div id="gift-content" class="gift-content">
-      <div class="flower-wrapper">
-        <div id="petals"></div>
-        <div class="center"></div>
-        <div class="stem"></div>
-        <div class="leaf leaf-left"></div>
-        <div class="leaf leaf-right"></div>
+      <div class="bouquet-wrapper">
+        <!-- Flor Izquierda -->
+        <div class="flower-item flower-left">
+          <div class="flower-head">
+            <div class="petals"></div>
+            <div class="center"></div>
+          </div>
+          <div class="stem"></div>
+        </div>
+
+        <!-- Flor Central -->
+        <div class="flower-item flower-center">
+          <div class="flower-head">
+            <div class="petals"></div>
+            <div class="center"></div>
+          </div>
+          <div class="stem"></div>
+        </div>
+
+        <!-- Flor Derecha -->
+        <div class="flower-item flower-right">
+          <div class="flower-head">
+            <div class="petals"></div>
+            <div class="center"></div>
+          </div>
+          <div class="stem"></div>
+        </div>
+
+        <!-- Hojas y Lazo que une el ramo -->
+        <div class="leaf leaf-1"></div>
+        <div class="leaf leaf-2"></div>
+        <div class="bouquet-ribbon">
+          <div class="ribbon-knot"></div>
+          <div class="ribbon-tails">
+            <div class="ribbon-tail left"></div>
+            <div class="ribbon-tail right"></div>
+          </div>
+        </div>
       </div>
 
       <div class="card-text">
-        <h1>Para alguien muy especial 🌻</h1>
+        <h1>Para ti 🌻</h1>
         <p>
-          Apesar de que ahora no hablamos tanto, quiero que sepas que por ser tu, mereces almenos unas flores amarillas (aunque sean digitales jeje🌻💝)
+          Un ramito de flores amarillas que nunca se marchitan, hechas con código especialmente para ti. 
+          Gracias por iluminar mis días.
         </p>
       </div>
     </div>
   </div>
 
   <script>
-    // Genera los pétalos del girasol distribuidos en 360°
-    const petalsContainer = document.getElementById('petals');
-    const totalPetals = 16;
-    for (let i = 0; i < totalPetals; i++) {
-      const petal = document.createElement('div');
-      petal.className = 'petal';
-      petal.style.transform = `rotate(${i * (360 / totalPetals)}deg)`;
-      petalsContainer.appendChild(petal);
-    }
+    // Genera automáticamente los pétalos para las 3 flores
+    const flowerHeads = document.querySelectorAll('.petals');
+    const totalPetals = 14;
 
-    // Función al hacer click
+    flowerHeads.forEach(container => {
+      for (let i = 0; i < totalPetals; i++) {
+        const petal = document.createElement('div');
+        petal.className = 'petal';
+        petal.style.transform = `rotate(${i * (360 / totalPetals)}deg)`;
+        container.appendChild(petal);
+      }
+    });
+
+    // Revelar ramo y activar partículas
     function revealGift() {
       document.getElementById('intro-screen').style.display = 'none';
       const content = document.getElementById('gift-content');
       content.classList.add('show');
       
-      // Inicia lluvia de pétalos flotantes
-      setInterval(createFloatingPetal, 250);
+      setInterval(createFloatingPetal, 260);
     }
 
     function createFloatingPetal() {
