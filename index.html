@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Un detalle para ti 🌻</title>
+  <title>Para ti 🌻</title>
   <style>
     * {
       box-sizing: border-box;
@@ -13,21 +13,25 @@
 
     body {
       min-height: 100vh;
-      background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at center, #1b263b 0%, #0d131f 100%);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       overflow-x: hidden;
       color: #fff;
+      position: relative;
     }
 
     .container {
       text-align: center;
-      padding: 2rem 1.5rem;
-      max-width: 520px;
-      width: 90%;
-      z-index: 2;
+      padding: 1.5rem;
+      max-width: 540px;
+      width: 100%;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     /* Botón inicial */
@@ -35,208 +39,73 @@
       background: linear-gradient(135deg, #ffd000, #ff9100);
       color: #1a1a1a;
       border: none;
-      padding: 14px 34px;
+      padding: 15px 36px;
       font-size: 1.15rem;
       font-weight: 700;
       border-radius: 50px;
       cursor: pointer;
-      box-shadow: 0 4px 20px rgba(255, 208, 0, 0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 6px 25px rgba(255, 208, 0, 0.45);
+      transition: all 0.3s ease;
     }
 
     .btn-open:hover {
-      transform: scale(1.06);
-      box-shadow: 0 6px 28px rgba(255, 208, 0, 0.6);
+      transform: scale(1.07);
+      box-shadow: 0 8px 30px rgba(255, 208, 0, 0.65);
     }
 
-    /* Contenedor del contenido */
+    /* Contenido que aparece */
     .gift-content {
       display: none;
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-
-    .gift-content.show {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* === CONTENEDOR DEL RAMO === */
-    .bouquet-wrapper {
-      position: relative;
-      width: 280px;
-      height: 260px;
-      margin: 0 auto 1.5rem auto;
-      animation: gentle-sway 4s ease-in-out infinite alternate;
-    }
-
-    /* Cada flor con su propio tallo y posición */
-    .flower-item {
-      position: absolute;
-      transform-origin: bottom center;
-    }
-
-    /* Flor central */
-    .flower-center {
-      top: 0px;
-      left: calc(50% - 45px);
-      z-index: 3;
-    }
-
-    /* Flor izquierda */
-    .flower-left {
-      top: 30px;
-      left: calc(50% - 105px);
-      transform: rotate(-18deg) scale(0.9);
-      z-index: 2;
-    }
-
-    /* Flor derecha */
-    .flower-right {
-      top: 30px;
-      left: calc(50% + 15px);
-      transform: rotate(18deg) scale(0.9);
-      z-index: 2;
-    }
-
-    /* Cabeza de la flor */
-    .flower-head {
-      position: relative;
-      width: 90px;
-      height: 90px;
-    }
-
-    .center {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 36px;
-      height: 36px;
-      background: radial-gradient(circle, #5a3818 0%, #291202 100%);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 4;
-      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.7);
-    }
-
-    .petal {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 15px;
-      height: 44px;
-      background: linear-gradient(to top, #ffb703, #ffe600);
-      border-radius: 50% 50% 20% 20%;
-      transform-origin: bottom center;
-      margin-left: -7.5px;
-      margin-top: -44px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
-    }
-
-    /* Tallos individuales */
-    .stem {
-      width: 7px;
-      background: linear-gradient(to right, #2d6a4f, #40916c);
-      border-radius: 4px;
-      margin: -6px auto 0 auto;
-      position: relative;
-    }
-
-    .flower-center .stem {
-      height: 145px;
-    }
-
-    .flower-left .stem {
-      height: 135px;
-      transform: rotate(7deg);
-    }
-
-    .flower-right .stem {
-      height: 135px;
-      transform: rotate(-7deg);
-    }
-
-    /* Hojas decorativas */
-    .leaf {
-      position: absolute;
-      width: 28px;
-      height: 16px;
-      background: #40916c;
-      border-radius: 100px 0;
-      z-index: 1;
-    }
-
-    .leaf-1 {
-      top: 140px;
-      left: 35px;
-      transform: rotate(-40deg);
-    }
-
-    .leaf-2 {
-      top: 140px;
-      right: 35px;
-      transform: rotate(220deg);
-    }
-
-    /* Cinta / Lazo del ramo */
-    .bouquet-ribbon {
-      position: absolute;
-      bottom: 25px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
+      transform: translateY(25px);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    .ribbon-knot {
-      width: 24px;
-      height: 14px;
-      background: #e63946;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-    }
-
-    .ribbon-tails {
+    .gift-content.show {
       display: flex;
-      gap: 4px;
-      margin-top: -2px;
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .ribbon-tail {
-      width: 6px;
-      height: 22px;
-      background: #e63946;
-      border-radius: 2px;
+    /* Contenedor del Ramo */
+    .bouquet-container {
+      position: relative;
+      width: 320px;
+      height: 420px;
+      margin: 0 auto;
+      filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.5));
+      animation: gentle-sway 4.5s ease-in-out infinite alternate;
     }
 
-    .ribbon-tail.left {
-      transform: rotate(18deg);
-    }
-
-    .ribbon-tail.right {
-      transform: rotate(-18deg);
+    .bouquet-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
     }
 
     /* Tarjeta de texto */
     .card-text {
       background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 18px;
-      padding: 1.8rem;
-      margin-top: 1.5rem;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+      border-radius: 20px;
+      padding: 1.8rem 2rem;
+      margin-top: 1.2rem;
+      width: 92%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
 
     .card-text h1 {
       font-size: 1.6rem;
       color: #ffd000;
       margin-bottom: 0.8rem;
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: 0.5px;
     }
 
     .card-text p {
@@ -245,26 +114,48 @@
       color: #e2e8f0;
     }
 
-    /* Animaciones */
+    /* Animación del ramo */
     @keyframes gentle-sway {
-      0% { transform: rotate(-2.5deg); }
-      100% { transform: rotate(2.5deg); }
+      0% { transform: rotate(-1.5deg); }
+      100% { transform: rotate(1.5deg); }
     }
 
-    .petal-particle {
+    /* Partículas de lluvia (pétalos, corazones, flores) */
+    .falling-item {
       position: fixed;
-      top: -10px;
-      background: #ffe169;
-      border-radius: 100% 0% 100% 0%;
+      top: -40px;
       pointer-events: none;
+      z-index: 2;
       animation: fall linear forwards;
-      opacity: 0.8;
-      z-index: 1;
+    }
+
+    .falling-petal {
+      background: linear-gradient(135deg, #ffd000, #ffae00);
+      border-radius: 100% 0% 100% 0%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .falling-heart {
+      color: #ff4d6d;
+      font-size: 1.2rem;
+      text-shadow: 0 2px 8px rgba(255, 77, 109, 0.4);
+    }
+
+    .falling-flower {
+      font-size: 1.3rem;
+      filter: drop-shadow(0 2px 6px rgba(255, 208, 0, 0.3));
     }
 
     @keyframes fall {
-      to {
-        transform: translateY(105vh) rotate(360deg);
+      0% {
+        transform: translateY(0) rotate(0deg) translateX(0);
+        opacity: 0.9;
+      }
+      50% {
+        transform: translateY(50vh) rotate(180deg) translateX(25px);
+      }
+      100% {
+        transform: translateY(105vh) rotate(360deg) translateX(-20px);
         opacity: 0;
       }
     }
@@ -273,99 +164,228 @@
 <body>
 
   <div class="container">
-    <!-- Botón inicial -->
+    <!-- Botón de bienvenida -->
     <div id="intro-screen">
       <button class="btn-open" onclick="revealGift()">Abrir sorpresa ✨</button>
     </div>
 
-    <!-- Ramo y mensaje -->
-    <div id="gift-content" class="gift-content">
-      <div class="bouquet-wrapper">
-        <!-- Flor Izquierda -->
-        <div class="flower-item flower-left">
-          <div class="flower-head">
-            <div class="petals"></div>
-            <div class="center"></div>
-          </div>
-          <div class="stem"></div>
-        </div>
+    <!-- Contenido del ramo y dedicatoria -->
+    <div id="gift-content" class="gift-content" style="display: none;">
+      <div class="bouquet-container">
+        <!-- SVG Vectorial en puro código que dibuja el ramo agrupado, papeles y lazo -->
+        <svg class="bouquet-svg" viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <!-- Degradados de los papeles envolventes -->
+            <linearGradient id="kraftOuter" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#cb9b69"/>
+              <stop offset="50%" stop-color="#b68352"/>
+              <stop offset="100%" stop-color="#8c5a2c"/>
+            </linearGradient>
+            <linearGradient id="kraftLeft" x1="0%" y1="0%" x2="100%" y2="50%">
+              <stop offset="0%" stop-color="#d8a876"/>
+              <stop offset="100%" stop-color="#a67343"/>
+            </linearGradient>
+            <linearGradient id="kraftRight" x1="100%" y1="0%" x2="0%" y2="50%">
+              <stop offset="0%" stop-color="#d8a876"/>
+              <stop offset="100%" stop-color="#9a6737"/>
+            </linearGradient>
+            <linearGradient id="whitePaper" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="70%" stop-color="#ecebf0"/>
+              <stop offset="100%" stop-color="#cfd3dc"/>
+            </linearGradient>
 
-        <!-- Flor Central -->
-        <div class="flower-item flower-center">
-          <div class="flower-head">
-            <div class="petals"></div>
-            <div class="center"></div>
-          </div>
-          <div class="stem"></div>
-        </div>
+            <!-- Degradados de pétalos y centros -->
+            <linearGradient id="petalGrad1" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="#e08600"/>
+              <stop offset="45%" stop-color="#ffb703"/>
+              <stop offset="100%" stop-color="#fff066"/>
+            </linearGradient>
+            <linearGradient id="petalGrad2" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="#d16b00"/>
+              <stop offset="50%" stop-color="#ffa200"/>
+              <stop offset="100%" stop-color="#ffe169"/>
+            </linearGradient>
+            <radialGradient id="sunCenter">
+              <stop offset="0%" stop-color="#1e0c03"/>
+              <stop offset="55%" stop-color="#3d1d07"/>
+              <stop offset="85%" stop-color="#5a2d0c"/>
+              <stop offset="100%" stop-color="#8f4a13"/>
+            </radialGradient>
 
-        <!-- Flor Derecha -->
-        <div class="flower-item flower-right">
-          <div class="flower-head">
-            <div class="petals"></div>
-            <div class="center"></div>
-          </div>
-          <div class="stem"></div>
-        </div>
+            <!-- Degradados de tallos y cinta -->
+            <linearGradient id="stemGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#2d6a4f"/>
+              <stop offset="50%" stop-color="#52b788"/>
+              <stop offset="100%" stop-color="#1b4332"/>
+            </linearGradient>
+            <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffe6a7"/>
+              <stop offset="40%" stop-color="#e09f3e"/>
+              <stop offset="100%" stop-color="#9e2a2b"/>
+            </linearGradient>
 
-        <!-- Hojas y Lazo que une el ramo -->
-        <div class="leaf leaf-1"></div>
-        <div class="leaf leaf-2"></div>
-        <div class="bouquet-ribbon">
-          <div class="ribbon-knot"></div>
-          <div class="ribbon-tails">
-            <div class="ribbon-tail left"></div>
-            <div class="ribbon-tail right"></div>
-          </div>
-        </div>
+            <!-- Modelo de pétalo -->
+            <path id="singlePetal" d="M0,0 C-5,-16 -7,-30 0,-44 C7,-30 5,-16 0,0 Z" />
+
+            <!-- Girasol ensamblado con 18 pétalos dobles -->
+            <g id="sunflower">
+              <g fill="url(#petalGrad2)">
+                <use href="#singlePetal" transform="rotate(0)"/>
+                <use href="#singlePetal" transform="rotate(20)"/>
+                <use href="#singlePetal" transform="rotate(40)"/>
+                <use href="#singlePetal" transform="rotate(60)"/>
+                <use href="#singlePetal" transform="rotate(80)"/>
+                <use href="#singlePetal" transform="rotate(100)"/>
+                <use href="#singlePetal" transform="rotate(120)"/>
+                <use href="#singlePetal" transform="rotate(140)"/>
+                <use href="#singlePetal" transform="rotate(160)"/>
+                <use href="#singlePetal" transform="rotate(180)"/>
+                <use href="#singlePetal" transform="rotate(200)"/>
+                <use href="#singlePetal" transform="rotate(220)"/>
+                <use href="#singlePetal" transform="rotate(240)"/>
+                <use href="#singlePetal" transform="rotate(260)"/>
+                <use href="#singlePetal" transform="rotate(280)"/>
+                <use href="#singlePetal" transform="rotate(300)"/>
+                <use href="#singlePetal" transform="rotate(320)"/>
+                <use href="#singlePetal" transform="rotate(340)"/>
+              </g>
+              <g fill="url(#petalGrad1)" transform="scale(0.92) rotate(10)">
+                <use href="#singlePetal" transform="rotate(0)"/>
+                <use href="#singlePetal" transform="rotate(20)"/>
+                <use href="#singlePetal" transform="rotate(40)"/>
+                <use href="#singlePetal" transform="rotate(60)"/>
+                <use href="#singlePetal" transform="rotate(80)"/>
+                <use href="#singlePetal" transform="rotate(100)"/>
+                <use href="#singlePetal" transform="rotate(120)"/>
+                <use href="#singlePetal" transform="rotate(140)"/>
+                <use href="#singlePetal" transform="rotate(160)"/>
+                <use href="#singlePetal" transform="rotate(180)"/>
+                <use href="#singlePetal" transform="rotate(200)"/>
+                <use href="#singlePetal" transform="rotate(220)"/>
+                <use href="#singlePetal" transform="rotate(240)"/>
+                <use href="#singlePetal" transform="rotate(260)"/>
+                <use href="#singlePetal" transform="rotate(280)"/>
+                <use href="#singlePetal" transform="rotate(300)"/>
+                <use href="#singlePetal" transform="rotate(320)"/>
+                <use href="#singlePetal" transform="rotate(340)"/>
+              </g>
+              <!-- Centro texturizado -->
+              <circle cx="0" cy="0" r="18" fill="url(#sunCenter)" stroke="#1a0802" stroke-width="1"/>
+              <circle cx="0" cy="0" r="13" fill="none" stroke="#683713" stroke-width="1.8" stroke-dasharray="2,3"/>
+              <circle cx="0" cy="0" r="8" fill="none" stroke="#2b1103" stroke-width="1.5" stroke-dasharray="2,2"/>
+            </g>
+          </defs>
+
+          <!-- 1. PAPEL KRAFT TRASERO (Alas del ramo) -->
+          <polygon points="70,40 330,40 230,410 170,410" fill="url(#kraftOuter)"/>
+          <polygon points="65,35 150,110 200,410 170,410" fill="url(#kraftLeft)" opacity="0.85"/>
+          <polygon points="335,35 250,110 200,410 230,410" fill="url(#kraftRight)" opacity="0.85"/>
+
+          <!-- 2. PAPEL BLANCO INTERIOR -->
+          <polygon points="90,110 310,110 225,400 175,400" fill="url(#whitePaper)" opacity="0.95"/>
+          <polygon points="75,130 140,210 185,395 165,385" fill="#f8f9fa"/>
+          <polygon points="325,130 260,210 215,395 235,385" fill="#dfe3e8"/>
+
+          <!-- 3. TALLOS INFERIORES QUE SALEN DEL RAMO -->
+          <g fill="url(#stemGrad)">
+            <rect x="183" y="390" width="6" height="85" rx="3" transform="rotate(-4, 186, 430)"/>
+            <rect x="191" y="390" width="7" height="90" rx="3"/>
+            <rect x="201" y="390" width="6" height="85" rx="3" transform="rotate(4, 204, 430)"/>
+            <rect x="177" y="398" width="6" height="70" rx="3" transform="rotate(-8, 180, 430)"/>
+            <rect x="207" y="398" width="6" height="70" rx="3" transform="rotate(8, 210, 430)"/>
+          </g>
+
+          <!-- 4. HOJAS VERDES ENTRE LAS FLORES -->
+          <path d="M140,190 C120,155 105,170 120,205 C130,225 150,210 140,190 Z" fill="#2d6a4f"/>
+          <path d="M260,190 C280,155 295,170 280,205 C270,225 250,210 260,190 Z" fill="#387a5b"/>
+          <path d="M195,240 C175,270 185,290 200,285 C215,280 215,260 195,240 Z" fill="#20503b"/>
+
+          <!-- 5. GRUPO DENSO DE GIRASOLES (Posiciones similares a la foto) -->
+          <!-- Flor fondo superior -->
+          <use href="#sunflower" x="200" y="115" transform="scale(0.95)" transform-origin="200 115"/>
+          <!-- Flores capa intermedia -->
+          <use href="#sunflower" x="145" y="145" transform="scale(0.92)" transform-origin="145 145"/>
+          <use href="#sunflower" x="255" y="145" transform="scale(0.92)" transform-origin="255 145"/>
+          <!-- Flor centro del ramo -->
+          <use href="#sunflower" x="200" y="175" transform="scale(1.05)" transform-origin="200 175"/>
+          <!-- Flores frontales inferiores destacadas -->
+          <use href="#sunflower" x="155" y="225" transform="scale(1.12)" transform-origin="155 225"/>
+          <use href="#sunflower" x="245" y="225" transform="scale(1.12)" transform-origin="245 225"/>
+
+          <!-- 6. PLIEGUES DELANTEROS DEL PAPEL KRAFT QUE ABRAZAN EL RAMO -->
+          <path d="M135,270 C160,330 175,370 185,405 L165,395 C145,340 120,300 135,270 Z" fill="#b17f4e" opacity="0.6"/>
+          <path d="M265,270 C240,330 225,370 215,405 L235,395 C255,340 280,300 265,270 Z" fill="#916134" opacity="0.6"/>
+
+          <!-- 7. LAZO ELEGANTE Y CINTAS COLGANTES -->
+          <!-- Cintas cayendo sobre los tallos -->
+          <path d="M190,395 C180,425 170,445 180,475 C183,482 188,485 185,490 L178,488 C168,445 174,420 184,395 Z" fill="url(#ribbonGrad)"/>
+          <path d="M210,395 C220,425 230,445 220,475 C217,482 212,485 215,490 L222,488 C232,445 226,420 216,395 Z" fill="url(#ribbonGrad)"/>
+          <!-- Lazos laterales -->
+          <path d="M195,392 C165,375 160,405 190,400 Z" fill="url(#ribbonGrad)" stroke="#aa7424" stroke-width="0.8"/>
+          <path d="M205,392 C235,375 240,405 210,400 Z" fill="url(#ribbonGrad)" stroke="#aa7424" stroke-width="0.8"/>
+          <!-- Nudo central -->
+          <ellipse cx="200" cy="395" rx="9" ry="7" fill="#e09f3e" stroke="#8c581b" stroke-width="1"/>
+        </svg>
       </div>
 
+      <!-- Dedicatoria -->
       <div class="card-text">
-        <h1>Para ti 🌻</h1>
+        <h1>Para alguien muy especial 🌻</h1>
         <p>
-          Un ramito de flores amarillas que nunca se marchitan, hechas con código especialmente para ti. 
-          Gracias por iluminar mis días.
+          Un ramito de flores amarillas creado en código, para recordarte lo mucho que iluminas todo a tu alrededor. 
+          Que nunca te falten sonrisas, luz ni motivos para ser feliz.
         </p>
       </div>
     </div>
   </div>
 
   <script>
-    // Genera automáticamente los pétalos para las 3 flores
-    const flowerHeads = document.querySelectorAll('.petals');
-    const totalPetals = 14;
-
-    flowerHeads.forEach(container => {
-      for (let i = 0; i < totalPetals; i++) {
-        const petal = document.createElement('div');
-        petal.className = 'petal';
-        petal.style.transform = `rotate(${i * (360 / totalPetals)}deg)`;
-        container.appendChild(petal);
-      }
-    });
-
-    // Revelar ramo y activar partículas
     function revealGift() {
       document.getElementById('intro-screen').style.display = 'none';
       const content = document.getElementById('gift-content');
-      content.classList.add('show');
+      content.style.display = 'flex';
+      setTimeout(() => content.classList.add('show'), 15);
       
-      setInterval(createFloatingPetal, 260);
+      // Iniciar la lluvia múltiple
+      setInterval(createFloatingElement, 220);
     }
 
-    function createFloatingPetal() {
-      const petal = document.createElement('div');
-      petal.className = 'petal-particle';
-      petal.style.left = Math.random() * window.innerWidth + 'px';
-      const size = Math.random() * 12 + 10;
-      petal.style.width = size + 'px';
-      petal.style.height = size + 'px';
-      petal.style.animationDuration = (Math.random() * 3 + 4) + 's';
-      document.body.appendChild(petal);
+    function createFloatingElement() {
+      const item = document.createElement('div');
+      item.className = 'falling-item';
+      
+      // Aleatoriedad para definir si cae pétalo, flor o corazón
+      const rand = Math.random();
 
+      if (rand < 0.45) {
+        // Pétalo amarillo
+        item.classList.add('falling-petal');
+        const size = Math.random() * 10 + 10;
+        item.style.width = size + 'px';
+        item.style.height = (size * 1.5) + 'px';
+      } else if (rand < 0.75) {
+        // Flor amarilla pequeña
+        item.classList.add('falling-flower');
+        item.innerHTML = '🌼';
+      } else {
+        // Corazón
+        item.classList.add('falling-heart');
+        const hearts = ['💛', '💖', '✨'];
+        item.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+      }
+
+      // Posición horizontal y duración de la caída
+      item.style.left = (Math.random() * window.innerWidth) + 'px';
+      const duration = Math.random() * 3 + 4.5;
+      item.style.animationDuration = duration + 's';
+
+      document.body.appendChild(item);
+
+      // Eliminar elemento al terminar el recorrido
       setTimeout(() => {
-        petal.remove();
-      }, 7000);
+        item.remove();
+      }, duration * 1000);
     }
   </script>
 </body>
