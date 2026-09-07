@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Un detalle para ti 🌻</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      color: #fff;
+    }
+
+    .container {
+      text-align: center;
+      padding: 2rem;
+      max-width: 500px;
+      width: 90%;
+      z-index: 2;
+    }
+
+    /* Botón inicial */
+    .btn-open {
+      background: linear-gradient(135deg, #ffd000, #ff9100);
+      color: #1a1a1a;
+      border: none;
+      padding: 14px 32px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(255, 208, 0, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-open:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 25px rgba(255, 208, 0, 0.6);
+    }
+
+    /* Contenedor del contenido que aparece */
+    .gift-content {
+      display: none;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .gift-content.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Girasol / Flor en puro CSS */
+    .flower-wrapper {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 2.5rem auto;
+      animation: gentle-sway 4s ease-in-out infinite alternate;
+    }
+
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 52px;
+      height: 52px;
+      background: radial-gradient(circle, #5a3818 0%, #301704 100%);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+      box-shadow: inset 0 0 6px rgba(0,0,0,0.6);
+    }
+
+    .petal {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 22px;
+      height: 65px;
+      background: linear-gradient(to top, #ffb703, #ffe600);
+      border-radius: 50% 50% 20% 20%;
+      transform-origin: bottom center;
+      margin-left: -11px;
+      margin-top: -65px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    }
+
+    /* Tallo y hojas */
+    .stem {
+      position: absolute;
+      top: 90px;
+      left: 50%;
+      width: 8px;
+      height: 100px;
+      background: linear-gradient(to right, #2d6a4f, #40916c);
+      transform: translateX(-50%);
+      border-radius: 4px;
+      z-index: 1;
+    }
+
+    .leaf {
+      position: absolute;
+      width: 25px;
+      height: 15px;
+      background: #40916c;
+      border-radius: 100px 0px;
+      z-index: 1;
+    }
+
+    .leaf-left {
+      top: 130px;
+      left: calc(50% - 28px);
+      transform: rotate(-30deg);
+    }
+
+    .leaf-right {
+      top: 150px;
+      left: calc(50% + 4px);
+      transform: rotate(200deg);
+    }
+
+    /* Texto */
+    .card-text {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 1.8rem;
+      margin-top: 5.5rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-text h1 {
+      font-size: 1.6rem;
+      color: #ffd000;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+
+    .card-text p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #e2e8f0;
+    }
+
+    /* Animaciones */
+    @keyframes gentle-sway {
+      0% { transform: rotate(-3deg); }
+      100% { transform: rotate(3deg); }
+    }
+
+    .petal-particle {
+      position: fixed;
+      top: -10px;
+      background: #ffe169;
+      border-radius: 100% 0% 100% 0%;
+      pointer-events: none;
+      animation: fall linear forwards;
+      opacity: 0.8;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(105vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Botón que ve primero -->
+    <div id="intro-screen">
+      <button class="btn-open" onclick="revealGift()">Abrir sorpresa ✨</button>
+    </div>
+
+    <!-- Contenido revelado -->
+    <div id="gift-content" class="gift-content">
+      <div class="flower-wrapper">
+        <div id="petals"></div>
+        <div class="center"></div>
+        <div class="stem"></div>
+        <div class="leaf leaf-left"></div>
+        <div class="leaf leaf-right"></div>
+      </div>
+
+      <div class="card-text">
+        <h1>Para alguien muy especial 🌻</h1>
+        <p>
+          Apesar de que ahora no hablamos tanto, quiero que sepas que por ser tu, mereces almenos unas flores amarillas (aunque sean digitales jeje🌻💝)
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Genera los pétalos del girasol distribuidos en 360°
+    const petalsContainer = document.getElementById('petals');
+    const totalPetals = 16;
+    for (let i = 0; i < totalPetals; i++) {
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+      petal.style.transform = `rotate(${i * (360 / totalPetals)}deg)`;
+      petalsContainer.appendChild(petal);
+    }
+
+    // Función al hacer click
+    function revealGift() {
+      document.getElementById('intro-screen').style.display = 'none';
+      const content = document.getElementById('gift-content');
+      content.classList.add('show');
+      
+      // Inicia lluvia de pétalos flotantes
+      setInterval(createFloatingPetal, 250);
+    }
+
+    function createFloatingPetal() {
+      const petal = document.createElement('div');
+      petal.className = 'petal-particle';
+      petal.style.left = Math.random() * window.innerWidth + 'px';
+      const size = Math.random() * 12 + 10;
+      petal.style.width = size + 'px';
+      petal.style.height = size + 'px';
+      petal.style.animationDuration = (Math.random() * 3 + 4) + 's';
+      document.body.appendChild(petal);
+
+      setTimeout(() => {
+        petal.remove();
+      }, 7000);
+    }
+  </script>
+</body>
+</html>
